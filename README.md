@@ -1,3 +1,5 @@
+![Powered by Dark Sky](https://darksky.net/dev/img/attribution/poweredby-oneline.png)
+
 # weather-dot3k-darksky
 An ambient weather display for Raspberry Pi Zero W, Pimoroni Display-o-Tron 3000 / HAT, and Dark Sky API
 
@@ -9,8 +11,6 @@ Display the weather forecast using the Dark Sky API on Pimoroni's Display-o-Tron
 - [Raspberry Pi and Pimoroni's Display-o-Tron 3000 / HAT](https://shop.pimoroni.com/products/display-o-tron-hat)
 - [Display-o-Tron libraries](https://github.com/pimoroni/displayotron)
 - You'll need an API key for [Dark Sky API](https://darksky.net/dev/)
-
-![Powered by Dark Sky](https://darksky.net/dev/img/attribution/poweredby-oneline.png)
 
 ## Installation
 
