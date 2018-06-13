@@ -27,6 +27,8 @@ LAT="50.7"; export LAT
 LON="-10.5"; export LON
 ```
 
+Find your latitude and longitude [here](https://www.latlong.net/).
+
 ## Run
 
 `python darkpi.py`
