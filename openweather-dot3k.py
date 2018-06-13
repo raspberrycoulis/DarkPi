@@ -30,8 +30,13 @@ def update_weather():
     try:
         r = requests.get(url=url, params=payload)
         temp = r.json().get('main').get('temp')
+        humidity = r.json().get('main').get('humidity')
         print("Temperture = "+str(temp)+" C")
         lcd.write("Temperture = "+str(temp)+" C")
+        sleep(5)
+        lcd.clear()
+        print("Humidity = "+str(humidity)+" %")
+        lcd.write("Humidity = "+str(humidity)+" %")
     except:
         lcd.write("Connection Error")
 
