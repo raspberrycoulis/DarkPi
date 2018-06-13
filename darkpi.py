@@ -1,4 +1,7 @@
-from blinkt import set_pixel, set_clear_on_exit, show, clear
+#/usr/bin/env python
+from dot3k import lcd
+from dot3k import backlight as backlight
+backlight.use_rbg() # Required for early-batch DOT3K's as the RGB LEDs are RBG.
 import forecastio
 import os
 
