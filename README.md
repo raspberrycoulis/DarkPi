@@ -1,4 +1,4 @@
-# DarkPi
+# weather-dot3k-darksky
 An ambient weather display for Raspberry Pi Zero W, Pimoroni Display-o-Tron 3000 / HAT, and Dark Sky API
 
 Display the weather forecast using the Dark Sky API on Pimoroni's Display-o-Tron 3000 / HAT using a Raspberry Pi. A fork of https://github.com/ideasasylum/DarkPi which uses Pimoroni's Blinkt instead.
