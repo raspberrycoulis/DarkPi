@@ -8,7 +8,7 @@ Display the weather forecast using the Dark Sky API on Pimoroni's Display-o-Tron
 - [python-forecast.io](https://github.com/ZeevG/python-forecast.io)
 - [Raspberry Pi and Pimoroni's Display-o-Tron 3000 / HAT](https://shop.pimoroni.com/products/display-o-tron-hat)
 - [Display-o-Tron libraries](https://github.com/pimoroni/displayotron)
-- You'll need an api key for [Dark Sky api](https://darksky.net/dev/)
+- You'll need an API key for [Dark Sky API](https://darksky.net/dev/)
 
 ![Powered by Dark Sky](https://darksky.net/dev/img/attribution/poweredby-oneline.png)
 
