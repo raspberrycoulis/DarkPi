@@ -1,20 +1,20 @@
 # DarkPi
-An ambient weather display for Raspberry Pi Zero W, Pimoroni Blinkt, and Dark Sky API
+An ambient weather display for Raspberry Pi Zero W, Pimoroni Display-o-Tron 3000 / HAT, and Dark Sky API
 
-I thought this would be a useful way to gauge whether the kids needed to bring a jumper or coat to school each day. It uses the Dark Sky api to pull down the forecasts for the next 8 hours, and display some vaguely appropriate colours. The lights are dimmer at night.
+Display the weather forecast using the Dark Sky API on Pimoroni's Display-o-Tron 3000 / HAT using a Raspberry Pi. A fork of https://github.com/ideasasylum/DarkPi which uses Pimoroni's Blinkt instead.
 
 ## Requirements
 
 - [python-forecast.io](https://github.com/ZeevG/python-forecast.io)
-- [Raspberry Pi Zero W and Blinkt LEDs](https://shop.pimoroni.com/products/pi-zero-w-starter-kit)
-- [Blinkt libraries](https://github.com/pimoroni/blinkt)
+- [Raspberry Pi and Pimoroni's Display-o-Tron 3000 / HAT](https://shop.pimoroni.com/products/display-o-tron-hat)
+- [Display-o-Tron libraries](https://github.com/pimoroni/displayotron)
 - You'll need an api key for [Dark Sky api](https://darksky.net/dev/)
 
 ![Powered by Dark Sky](https://darksky.net/dev/img/attribution/poweredby-oneline.png)
 
 ## Installation
 
-Install the Blinkt libraries: https://github.com/pimoroni/blinkt
+Install the Display-o-Tron libraries: https://github.com/pimoroni/displayotron
 `sudo pip install python-forecastio`
 
 Put the darkypi.py script somewhere
@@ -51,13 +51,3 @@ Run `crontab -e` and add these entries to the crontab
 0 * * * * /darkpi/run.sh
 @reboot   /darkpi/run.sh
 ```
-
-## Examples
-
-![Partly cloudy](https://github.com/ideasasylum/DarkPi/blob/master/partlycloudy.JPG)
-
-![Output](https://github.com/ideasasylum/DarkPi/blob/master/output.JPG)
-
-![Rainy now](https://github.com/ideasasylum/DarkPi/blob/master/rainynow.JPG)
-
-![Clear and partly cloudy](https://github.com/ideasasylum/DarkPi/blob/master/clear-and-partly-cloudy.JPG)
