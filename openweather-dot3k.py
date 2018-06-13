@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 from dot3k import lcd
 from dot3k import backlight as backlight
@@ -29,14 +30,18 @@ def update_weather():
     global temp
     try:
         r = requests.get(url=url, params=payload)
+        location = r.json().get('name')
         temp = r.json().get('main').get('temp')
         humidity = r.json().get('main').get('humidity')
-        print("Temperture = "+str(temp)+" C")
-        lcd.write("Temperture = "+str(temp)+" C")
-        sleep(5)
-        lcd.clear()
-        print("Humidity = "+str(humidity)+" %")
-        lcd.write("Humidity = "+str(humidity)+" %")
+        lcd.set_cursor_position(0, 0)
+        print("City: "+str(location)+" ")
+        lcd.write("City: "+str(location)+" ")
+        lcd.set_cursor_position(0, 1)
+        print("Temperture: "+str(temp)+" °C")
+        lcd.write("Temp: "+str(temp)+" °C")
+        lcd.set_cursor_position(0, 2)
+        print("Humidity: "+str(humidity)+" %")
+        lcd.write("Humidity: "+str(humidity)+" %")
     except:
         lcd.write("Connection Error")
 
