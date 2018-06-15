@@ -30,7 +30,6 @@ rain = str(rainInt)
 
 screen = Papirus()
 text = PapirusText()
-font = ImageFont.truetype('/font/AnonymousPro.ttf', fontsize)
 
 def updateWeather():
     forecast = forecastio.load_forecast(api_key,latitude,longitude)
@@ -38,7 +37,7 @@ def updateWeather():
 try:
     screen.clear()
     print("Current weather:\nTemperture: "+temp+" °C\nHumidity: "+humidity+"%\nRain: "+rain+"%")
-    text.write("Current weather:\nTemp: "+temp+" C\nHumidity: "+humidity+"%\nRain: "+rain+"%", font=font, 16)
+    text.write("Current weather:\nTemp: "+temp+" C\nHumidity: "+humidity+"%\nRain: "+rain+"%")
 except:
     text.write("Connection Error")
 while 1:
