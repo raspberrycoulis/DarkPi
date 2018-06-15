@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import forecastio
 from dot3k import lcd
 from dot3k import backlight as backlight
 backlight.use_rbg() # Required for early-batch DOT3K's as the RGB LEDs are RBG.
@@ -9,9 +8,9 @@ from time import sleep
 from sys import exit
 
 try:
-    import requests
+    import forecastio
 except ImportError:
-    exit("This script requires the requests module\nInstall with: sudo pip install requests")
+    exit("This script requires the forecastio module\nInstall with: sudo pip install forecastio")
 
 # Grab your API key here: https://darksky.net/dev/
 # Find your latitude and longitude here https://www.latlong.net/
@@ -31,6 +30,9 @@ humidity = current.humidity*100
 humidity = str(humidity)
 rainInt = current.precipProbability*100
 rain = str(rainInt)
+
+def updateWeather():
+    forecast = forecastio.load_forecast(api_key,latitude,longitude)
 
 def rainWarning():
     if rainInt <= 10:
@@ -57,7 +59,7 @@ try:
 except:
     lcd.write("Connection Error")
 while 1:
-    forecast
+    updateWeather()
     rainWarning()
     graph()
     sleep(120)
