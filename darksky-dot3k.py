@@ -35,15 +35,15 @@ def updateWeather():
     forecast = forecastio.load_forecast(api_key,latitude,longitude)
 
 def rainWarning():
-    if rainInt <= 10:
+    if rainInt <= 33:
         backlight.rgb(0, 255, 0)
-    elif (rainInt > 11) and (rainInt <= 74):
+    elif (rainInt > 34) and (rainInt <= 74):
         backlight.rgb(255, 0, 0)
     else:
         backlight.rgb(0, 0, 255)
 
 def graph():
-    if raintInt ==0:
+    if rainInt ==0:
         backlight.set_graph(0)
     elif (rainInt >1) and (rainInt <=9):
         backlight.set_graph(0.1)
