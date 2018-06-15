@@ -23,15 +23,14 @@ longitude = 'ADD_YOUR_LONGITUDE_HERE'
 forecast = forecastio.load_forecast(api_key,latitude,longitude)
 current = forecast.currently()
 
-# Get the temperature, humidity and chance of rain then 
+# Get the temperature, humidity and chance of rain then
 # convert to strings to display on DOT3K.
 temp = current.temperature
 temp = str(temp)
 humidity = current.humidity*100
 humidity = str(humidity)
-rain = current.precipProbability*100
 rainInt = current.precipProbability*100
-rain = str(rain)
+rain = str(rainInt)
 
 def rainWarning():
     if rainInt <= 10:
