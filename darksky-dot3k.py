@@ -39,11 +39,12 @@ def rainWarning():
         backlight.rgb(255, 0, 0)
     else:
         backlight.rgb(0, 0, 255)
-        
+
 def graph():
     backlight.set_graph(rainInt)
 
 try:
+    lcd.clear()
     lcd.set_cursor_position(0, 0)
     print("Temperture: "+temp+" °C")
     lcd.write("Temp: "+temp+" C")
@@ -60,4 +61,3 @@ while 1:
     rainWarning()
     graph()
     sleep(120)
-    lcd.clear()
