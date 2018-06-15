@@ -37,7 +37,7 @@ def updateWeather():
 
 def rainWarning():
     if rainInt <= 33:
-        backlight.rgb(0, 255, 0)    # Green (good)
+        backlight.rgb(165, 255, 0)    # Green (good)
     elif (rainInt > 34) and (rainInt <= 74):
         backlight.rgb(226, 111, 11) # Orange (warning)
     else:
