@@ -1,20 +1,26 @@
 ![Powered by Dark Sky](https://darksky.net/dev/img/attribution/poweredby-oneline.png)
 
-# weather-dot3k-darksky
-An ambient weather display for Raspberry Pi Zero W, Pimoroni Display-o-Tron 3000 / HAT, and Dark Sky API
+# weather-pi-data
+Various Python scripts that attempt to display weather data (either via [Dark Sky](https://darksky.net/dev/) or [Open Weather Map](https://openweathermap.org/)) on various Raspberry Pi related HATs or pHATs including:
 
-Display the weather forecast using the Dark Sky API on Pimoroni's Display-o-Tron 3000 / HAT using a Raspberry Pi. A fork of https://github.com/ideasasylum/DarkPi which uses Pimoroni's Blinkt instead.
+- [Display-o-Tron 3000 / HAT](https://shop.pimoroni.com/products/display-o-tron-hat)
+- [Blinkt!](https://shop.pimoroni.com/products/blinkt)
+- [PaPiRusZero](https://uk.pi-supply.com/products/papirus-zero-epaper-screen-phat-pi-zero)
 
 ## Requirements
 
+- A suitable HAT or pHAT and their accompanying libraries
 - [python-forecast.io](https://github.com/ZeevG/python-forecast.io)
-- [Raspberry Pi and Pimoroni's Display-o-Tron 3000 / HAT](https://shop.pimoroni.com/products/display-o-tron-hat)
-- [Display-o-Tron libraries](https://github.com/pimoroni/displayotron)
-- You'll need an API key for [Dark Sky API](https://darksky.net/dev/)
+- You'll need an API key for [Dark Sky API](https://darksky.net/dev/) or for [Open Weather Map](https://openweathermap.org/)
 
 ## Installation
 
-Install the Display-o-Tron libraries: https://github.com/pimoroni/displayotron
+Install the libraries for your HAT or pHAT:
+- [Display-o-Tron 3000 / HAT](https://github.com/pimoroni/displayotron)
+- [Blinkt!](https://github.com/pimoroni/blinkt)
+- [PaPiRusZero](https://github.com/PiSupply/PaPiRus)
+
+Install the required forecastio library, which is a Dark Sky API wrapper:
 `sudo pip install python-forecastio`
 
 Put the darkypi.py script somewhere
