@@ -39,21 +39,25 @@ def rainWarning():
         backlight.rgb(255, 0, 0)
     else:
         backlight.rgb(0, 0, 255)
+        
+def graph():
+    backlight.set_graph(rainInt)
 
 try:
     lcd.set_cursor_position(0, 0)
     print("Temperture: "+temp+" °C")
     lcd.write("Temp: "+temp+" C")
     lcd.set_cursor_position(0, 1)
-    print("Humidity: "+humidity+" %")
-    lcd.write("Humidity: "+humidity+" %")
+    print("Humidity: "+humidity+"%")
+    lcd.write("Humidity: "+humidity+"%")
     lcd.set_cursor_position(0, 2)
-    print("Rain: "+rain+" %")
-    lcd.write("Rain: "+rain+" %")
+    print("Rain: "+rain+"%")
+    lcd.write("Rain: "+rain+"%")
 except:
     lcd.write("Connection Error")
 while 1:
     forecast
     rainWarning()
+    graph()
     sleep(120)
     lcd.clear()
