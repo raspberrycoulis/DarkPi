@@ -3,7 +3,6 @@
 
 from papirus import Papirus, PapirusText, PapirusTextPos
 from time import sleep
-import os
 
 try:
     import forecastio
@@ -29,19 +28,18 @@ humidity = str(humidity)
 rainInt = current.precipProbability*100
 rain = str(rainInt)
 
+screen = Papirus()
+text = PapirusText()
+
+def updateWeather():
+    forecast = forecastio.load_forecast(api_key,latitude,longitude)
+
 try:
-    papirus.clear()
-#    lcd.set_cursor_position(0, 0)
-    print("Temperture: "+temp+" °C")
-    PapirusText.write("Temp: "+temp+" C")
-#    lcd.set_cursor_position(0, 1)
-#    print("Humidity: "+humidity+"%")
-#    lcd.write("Humidity: "+humidity+"%")
-#    lcd.set_cursor_position(0, 2)
-#    print("Rain: "+rain+"%")
-#    lcd.write("Rain: "+rain+"%")
+    screen.clear()
+    print("Temperture: "+temp+" °C\nHumidity: "+humidity+"%\nRain: "+rain+"%")
+    text.write("Temp: "+temp+" C\nHumidity: "+humidity+"%\nRain: "+rain+"%")
 except:
-    PapirusText.write("Connection Error")
+    text.write("Connection Error")
 while 1:
     updateWeather()
     sleep(120)
