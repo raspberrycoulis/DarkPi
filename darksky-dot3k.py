@@ -43,7 +43,28 @@ def rainWarning():
         backlight.rgb(0, 0, 255)
 
 def graph():
-    backlight.set_graph(rainInt)
+    if raintInt ==0:
+        backlight.set_graph(0)
+    elif (rainInt >1) and (rainInt <=9):
+        backlight.set_graph(0.1)
+    elif (rainInt >= 10) and (rainInt <=19):
+        backlight.set_graph(0.2)
+    elif (rainInt >= 20) and (rainInt <=29):
+        backlight.set_graph(0.3)
+    elif (rainInt >= 30) and (rainInt <=39):
+        backlight.set_graph(0.4)
+    elif (rainInt >= 40) and (rainInt <=49):
+        backlight.set_graph(0.5)
+    elif (rainInt >= 50) and (rainInt <=59):
+        backlight.set_graph(0.6)
+    elif (rainInt >= 60) and (rainInt <=69):
+        backlight.set_graph(0.7)
+    elif (rainInt >= 70) and (rainInt <=79):
+        backlight.set_graph(0.8)
+    elif (rainInt >= 80) and (rainInt <=89):
+        backlight.set_graph(0.9)
+    else:
+        backlight.set_graph(1.0)
 
 try:
     lcd.clear()
