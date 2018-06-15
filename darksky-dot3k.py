@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from dot3k import joystick as nav
 from dot3k import lcd
 from dot3k import backlight as backlight
 backlight.use_rbg() # Required for early-batch DOT3K's as the RGB LEDs are RBG.
 from time import sleep
-from sys import exit
+import os
 
 try:
     import forecastio
@@ -65,6 +66,14 @@ def graph():
         backlight.set_graph(0.9)
     else:
         backlight.set_graph(1.0)
+
+# Press the button on the joystick to exit
+@nav.on(nav.BUTTON)
+def handle_button(pin):
+    lcd.clear()
+    backlight.rgb(0, 0, 0)
+    backlight.set_graph(0)
+    os._exit(1)
 
 try:
     lcd.clear()
