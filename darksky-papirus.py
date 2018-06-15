@@ -37,7 +37,7 @@ def updateWeather():
 try:
     screen.clear()
     print("Current weather:\nTemperture: "+temp+" °C\nHumidity: "+humidity+"%\nRain: "+rain+"%")
-    text.write("Current weather:\nTemp: "+temp+" C\nHumidity: "+humidity+"%\nRain: "+rain+"%")
+    text.write("Current weather:\nTemp: "+temp+" C\nHumidity: "+humidity+"%\nRain: "+rain+"%", 18)
 except:
     text.write("Connection Error")
 while 1:
