@@ -19,26 +19,42 @@ api_key = 'ADD_YOUR_API_KEY_HERE'
 latitude = 'ADD_YOUR_LATITUDE_HERE'
 longitude = 'ADD_YOUR_LONGITUDE_HERE'
 
-city = 'ADD_YOUR_CITY_HERE'
-
+# Get the forecast details from Dark Sky
 forecast = forecastio.load_forecast(api_key,latitude,longitude)
 current = forecast.currently()
-daily = forecast.daily()
 
+# Get the temperature, humidity and chance of rain then 
+# convert to strings to display on DOT3K.
+temp = current.temperature
+temp = str(temp)
+humidity = current.humidity*100
+humidity = str(humidity)
+rain = current.precipProbability*100
+rainInt = current.precipProbability*100
+rain = str(rain)
+
+def rainWarning():
+    if rainInt <= 10:
+        backlight.rgb(0, 255, 0)
+    elif (rainInt > 11) and (rainInt <= 74):
+        backlight.rgb(255, 0, 0)
+    else:
+        backlight.rgb(0, 0, 255)
 
 try:
     lcd.set_cursor_position(0, 0)
-    print("City: "+str(city)+" ")
-    lcd.write("City: "+str(location)+" ")
+    print("Temperture: "+temp+" °C")
+    lcd.write("Temp: "+temp+" C")
     lcd.set_cursor_position(0, 1)
-    print("Temperture: "+str(current.temperature)+" °C")
-    lcd.write("Temp: "+str(current.temperature)+" °C")
+    print("Humidity: "+humidity+" %")
+    lcd.write("Humidity: "+humidity+" %")
     lcd.set_cursor_position(0, 2)
-    print("Humidity: "+str(current.humidity)+" %")
-    lcd.write("Humidity: "+str(current.humidity)+" %")
+    print("Rain: "+rain+" %")
+    lcd.write("Rain: "+rain+" %")
 except:
     lcd.write("Connection Error")
 while 1:
     forecast
+    rainWarning()
     sleep(120)
     lcd.clear()
