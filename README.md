@@ -23,39 +23,4 @@ Install the libraries for your HAT or pHAT:
 Install the required forecastio library, which is a Dark Sky API wrapper:
 `sudo pip install python-forecastio`
 
-Put the darkypi.py script somewhere
-
-Set the environment variables (I put them in `~/.bash_profile`)
-
-```shell
-DARKSKY_API="somethingsomething"; export DARKSKY_API
-LAT="50.7"; export LAT
-LON="-10.5"; export LON
-```
-
 Find your latitude and longitude [here](https://www.latlong.net/).
-
-## Run
-
-`python darkpi.py`
-
-## Scheduling
-
-We want the display to update every hour, and when we power on the device. 
-
-I wrote a little shell script called `run.sh` to hold the environment variables because cron is... awkward
-
-```shell
-DARKSKY_API="something"; export DARKSKY_API
-LAT="50.5"; export LAT
-LON="-8.5"; export LON
-
-python ~/darkpi/darkpi.py
-```
-
-Run `crontab -e` and add these entries to the crontab
-
-```
-0 * * * * /darkpi/run.sh
-@reboot   /darkpi/run.sh
-```
