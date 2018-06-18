@@ -23,7 +23,7 @@ forecast = forecastio.load_forecast(api_key,latitude,longitude)
 current = forecast.currently()
 
 # Get the temperature, humidity and chance of rain then
-# convert to strings to display on DOT3K.
+# convert to strings to display on PaPiRus.
 temp = current.temperature
 temp = str(temp)
 humidity = current.humidity*100
