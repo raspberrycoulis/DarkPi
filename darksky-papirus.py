@@ -36,6 +36,12 @@ text = PapirusText()
 
 def updateWeather():
     forecast = forecastio.load_forecast(api_key,latitude,longitude)
+    temp = current.temperature
+    temp = str(temp)
+    humidity = current.humidity*100
+    humidity = str(humidity)
+    rainInt = current.precipProbability*100
+    rain = str(rainInt)
 
 try:
     screen.clear()
