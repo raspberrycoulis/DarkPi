@@ -6,16 +6,18 @@ from dot3k import backlight as backlight
 backlight.use_rbg() # Required for early-batch DOT3K's as the RGB LEDs are RBG.
 from time import sleep
 from sys import exit
+from ConfigParser import ConfigParser
+
+# Import details from config file to save typing
+config = ConfigParser()
+config.read('config/config.ini')
+API_KEY = config.get('openweather', 'key')
+CITY_ID = config.get('openweather', 'city')
 
 try:
     import requests
 except ImportError:
     exit("This script requires the requests module\nInstall with: sudo pip install requests")
-
-# Grab your API key here: http://openweathermap.org
-# List of city ID city.list.json.gz can be downloaded here http://bulk.openweathermap.org/sample/
-API_KEY='ADD_YOUR_API_KEY_HERE'
-CITY_ID='ADD_YOUR_CITY_ID_HERE'
 
 url = 'http://api.openweathermap.org/data/2.5/weather'
 
