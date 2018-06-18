@@ -7,17 +7,19 @@ from dot3k import backlight as backlight
 backlight.use_rbg() # Required for early-batch DOT3K's as the RGB LEDs are RBG.
 from time import sleep
 import os
+from ConfigParser import ConfigParser
+
+# Import details from config file to save typing
+config = ConfigParser()
+config.read('config/config.ini')
+api_key = config.get('darksky', 'key')
+latitude = config.get('darksky', 'latitude')
+longitude = config.get('darksky', 'longitude')
 
 try:
     import forecastio
 except ImportError:
     exit("This script requires the forecastio module\nInstall with: sudo pip install forecastio")
-
-# Grab your API key here: https://darksky.net/dev/
-# Find your latitude and longitude here https://www.latlong.net/
-api_key = 'ADD_YOUR_API_KEY_HERE'
-latitude = 'ADD_YOUR_LATITUDE_HERE'
-longitude = 'ADD_YOUR_LONGITUDE_HERE'
 
 # Get the forecast details from Dark Sky
 forecast = forecastio.load_forecast(api_key,latitude,longitude)
