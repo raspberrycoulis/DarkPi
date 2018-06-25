@@ -27,7 +27,7 @@ Find your latitude and longitude [here](https://www.latlong.net/).
 
 ## Setup
 
-For simplicity, there is a `config.ini` file inside the `config` directory. Add your Dark Sky / Open Weather Map details there. **Note: Only the Dark Sky details are currently addeded here and this config will only work with the `testing.py` script until everything is up and running correctly!**
+For simplicity, there is a `config.ini` file inside the `config` directory. Add your Dark Sky / Open Weather Map details there.
 
 ## Additional info
 
