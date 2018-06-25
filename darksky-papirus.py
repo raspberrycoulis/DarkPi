@@ -20,6 +20,7 @@ except ImportError:
 
 def display():
     forecast = forecastio.load_forecast(api_key,latitude,longitude)
+    current = forecast.currently()
     temp = current.temperature
     temp = str(temp)
     humidity = current.humidity*100
