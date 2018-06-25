@@ -18,37 +18,23 @@ try:
 except ImportError:
     exit("This script requires the forecastio module\nInstall with: sudo pip install forecastio")
 
-# Get the forecast details from Dark Sky
-forecast = forecastio.load_forecast(api_key,latitude,longitude)
-current = forecast.currently()
-
-# Get the temperature, humidity and chance of rain then
-# convert to strings to display on PaPiRus.
-temp = current.temperature
-temp = str(temp)
-humidity = current.humidity*100
-humidity = str(humidity)
-rainInt = current.precipProbability*100
-rain = str(rainInt)
-
-screen = Papirus()
-text = PapirusText()
-
-def updateWeather():
+def display():
     forecast = forecastio.load_forecast(api_key,latitude,longitude)
     temp = current.temperature
     temp = str(temp)
     humidity = current.humidity*100
     humidity = str(humidity)
-    rainInt = current.precipProbability*100
-    rain = str(rainInt)
+    rain = current.precipProbability*100
+    rain = str(rain)
+    screen = Papirus()
+    text = PapirusText()
+    try:
+        screen.clear()
+        print("Current weather:\nTemperture: "+temp+" °C\nHumidity: "+humidity+"%\nRain: "+rain+"%")
+        text.write("Current weather:\nTemp: "+temp+" C\nHumidity: "+humidity+"%\nRain: "+rain+"%")
+    except:
+        text.write("Connection Error")
 
-try:
-    screen.clear()
-    print("Current weather:\nTemperture: "+temp+" °C\nHumidity: "+humidity+"%\nRain: "+rain+"%")
-    text.write("Current weather:\nTemp: "+temp+" C\nHumidity: "+humidity+"%\nRain: "+rain+"%", 18)
-except:
-    text.write("Connection Error")
-while 1:
-    updateWeather()
+while True:
+    display()
     sleep(120)
