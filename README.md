@@ -45,13 +45,21 @@ When running the `darksky-dot3k.py` script, the Display-o-Tron 3000 does a numbe
 
 ### Examples - Blinkt!
 
-The `blinkt-uvindex.py` script will pull the current UV Index and change the colour of the Blinkt accordingly:
+The `blinkt-uvindex.py` script will pull the current UV Index and changes the colour of the Blinkt accordingly:
 - Green = low UV index
 - Yellow = moderate UV index
 - Orange = high UV index
 - Red = very high UV index
 - Violet = extreme UV index
 It will also print out the UV index in the console. Exit with `CTRL+C` to exit cleanly. The Blinkt will be turned off.
+
+The `blinkt-rain.py` script works similar to the UV Index one, but shows the probability of rain and changes the colour of the Blinkt accordingly:
+- Green = very low chance of rain
+- Yellow = low chance of rain
+- Orange = moderate chance or rain
+- Red = high chance of rain
+- Blue = extreme chance of rain
+It will also print out the chance of rain in the console. Exit with `CTRL+C` to exit cleanly. The blinkt will be turned off.
 
 ### Examples - PaPiRus
 
