@@ -92,7 +92,19 @@ def display():
         backlight.set_graph(0)
         os._exit(1)
 
-while True:
-    rainWarning()
-    display()
-    sleep(300)    # 5 minutes
+try:
+    while True:
+        rainWarning()
+        display()
+        sleep(300)  # 5 minutes
+except (KeyboardInterrupt, SystemExit):
+    lcd.clear()
+    lcd.set_cursor_position(0, 0)
+    lcd.write("Exiting...")
+    lcd.set_cursor_position(0, 1)
+    lcd.write("Goodbye!")
+    sleep(2)
+    lcd.clear()
+    backlight.rgb(0, 0, 0)
+    backlight.set_graph(0)
+    os._exit(1)
