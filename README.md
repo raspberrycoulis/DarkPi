@@ -11,6 +11,7 @@ Various Python scripts that attempt to display weather data (either via [Dark Sk
 
 - A suitable HAT or pHAT and their accompanying libraries
 - [python-forecast.io](https://github.com/ZeevG/python-forecast.io)
+- [dark-sky-python wrapper](https://github.com/raspberrycoulis/dark-sky-python)
 - You'll need an API key for [Dark Sky API](https://darksky.net/dev/) or for [Open Weather Map](https://openweathermap.org/)
 
 ## Installation
