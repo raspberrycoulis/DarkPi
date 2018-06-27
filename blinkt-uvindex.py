@@ -1,5 +1,9 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
+
+# This script will get the current UV index from Dark Sky    #
+# then shows the results visually on the Blinkt by changing  #
+# the LED colours accordingly.                               #
+# Created by Wesley Archer (@raspberrycoulis)                #
 
 import blinkt
 from time import sleep
