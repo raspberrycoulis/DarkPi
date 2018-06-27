@@ -5,12 +5,14 @@ import blinkt
 from time import sleep
 import sys
 import os
+from ConfigParser import ConfigParser
 
-# Add your Dark Sky API key, latitude and longitude below
-
-API_KEY = 'ADD-HERE'
-LAT = ADD-HERE
-LON = ADD-HERE
+# Import details from config file to save typing
+config = ConfigParser()
+config.read('config/config.ini')
+api_key = config.get('darksky', 'key')
+latitude = config.get('darksky', 'latitude')
+longitude = config.get('darksky', 'longitude')
 
 # Blinkt stuff
 blinkt.set_brightness(0.1)
@@ -22,7 +24,7 @@ except ImportError:
     exit("This script requires the forecastio module\nInstall with: git clone https://github.com/raspberrycoulis/dark-sky-python.git\nThen run sudo python setup.py install in the directory")
 
 def rain():
-    f = darksky.Forecast(API_KEY, LAT, LON)
+    f = darksky.Forecast(api_key, latitude, longitude)
     hourly = f.hourly
     rain = hourly[1].precipProbability*100
     try:
