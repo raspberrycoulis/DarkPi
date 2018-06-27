@@ -1,6 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# This script will get the current weather forecast from     #
+# Dark Sky and display a variety of stats on Pimoroni’s      #
+# Display-o-Tron 3000, including temperature, humidity,      #
+# chance of rain and the UV index. The backlight colour will #
+# change depending on the UV index and the bar graph will    #
+# increase as the chance of rain does. You can also exit the #
+# script by pressing the joystick button too!                #
+# Created by Wesley Archer (@raspberrycoulis)                #
+
+import darksky
 from dot3k import joystick as nav
 from dot3k import lcd
 from dot3k import backlight as backlight
@@ -16,15 +26,17 @@ api_key = config.get('darksky', 'key')
 latitude = config.get('darksky', 'latitude')
 longitude = config.get('darksky', 'longitude')
 
+# Import forecastio and warn if not installed
 try:
     import forecastio
 except ImportError:
     exit("This script requires the forecastio module\nInstall with: sudo pip install forecastio")
     
+# Function to warn of rain in 1 hour. Uses alternative Dark Sky API wrapper.
 def rainWarning():
-    forecast = forecastio.load_forecast(api_key,latitude,longitude)
-    current = forecast.currently()
-    rain = current.precipProbability*100
+    f = darksky.Forecast(api_key, latitude, longitude)
+    hourly = f.hourly
+    rain = hourly[1].precipProbability*100
     if rain ==0:
         backlight.set_graph(0)
     elif (rain >1) and (rain <=9):
@@ -48,16 +60,19 @@ def rainWarning():
     else:
         backlight.set_graph(1.0)
 
+# Function to display the information accordingly.
 def display():
-    forecast = forecastio.load_forecast(api_key,latitude,longitude)
-    current = forecast.currently()
-    temp = current.temperature
+    forecast = forecastio.load_forecast(api_key,latitude,longitude) # forecastio - will remove
+    f = darksky.Forecast(api_key, latitude, longitude) # Need to switch to this permanently
+    current = forecast.currently() # forecastio
+    temp = current.temperature # forecastio
     temp = str(temp)
-    humidity = current.humidity*100
+    humidity = current.humidity*100 # forecastio
     humidity = str(humidity)
-    rain = current.precipProbability*100
+    hourly = f.hourly # Dark Sky Python API wrapper
+    rain = hourly[1].precipProbability*100 # Dark Sky Python API wrapper
     rain = str(rain)
-    uvIndex = current.uvIndex
+    uvIndex = current.uvIndex # forecastio
     uv = str(uvIndex)
     if uvIndex <=2.9:
         backlight.rgb(90, 148, 35)  # Green (low)
@@ -92,6 +107,7 @@ def display():
         backlight.set_graph(0)
         os._exit(1)
 
+# Run in a loop unless CTRL+C or joystick is pressed
 try:
     while True:
         rainWarning()
