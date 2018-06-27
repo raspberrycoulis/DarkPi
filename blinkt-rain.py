@@ -1,32 +1,31 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import darksky
 import blinkt
 from time import sleep
 import sys
 import os
-from ConfigParser import ConfigParser
 
-# Import details from config file to save typing
-config = ConfigParser()
-config.read('config/config.ini')
-api_key = config.get('darksky', 'key')
-latitude = config.get('darksky', 'latitude')
-longitude = config.get('darksky', 'longitude')
+# Add your Dark Sky API key, latitude and longitude below
+
+API_KEY = 'ADD-HERE'
+LAT = ADD-HERE
+LON = ADD-HERE
 
 # Blinkt stuff
 blinkt.set_brightness(0.1)
 blinkt.set_clear_on_exit(True)
 
 try:
-    import forecastio
+    import darksky
 except ImportError:
-    exit("This script requires the forecastio module\nInstall with: sudo pip install forecastio")
+    exit("This script requires the forecastio module\nInstall with: git clone https://github.com/raspberrycoulis/dark-sky-python.git\nThen run sudo python setup.py install in the directory")
 
 def rain():
-    forecast = forecastio.load_forecast(api_key,latitude,longitude)
-    current = forecast.currently()
-    rain = current.precipProbability*100
+    f = darksky.Forecast(API_KEY, LAT, LON)
+    hourly = f.hourly
+    rain = hourly[1].precipProbability*100
     try:
         if rain <=19:
             print("The chance of rain is very low")
