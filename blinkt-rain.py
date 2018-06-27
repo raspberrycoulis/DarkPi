@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import darksky
 import blinkt
 from time import sleep
 import sys
