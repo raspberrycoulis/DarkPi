@@ -53,7 +53,7 @@ The `blinkt-uvindex.py` script will pull the current UV Index and changes the co
 - Violet = extreme UV index
 It will also print out the UV index in the console. Exit with `CTRL+C` to exit cleanly. The Blinkt will be turned off.
 
-The `blinkt-rain.py` script works similar to the UV Index one, but shows the probability of rain and changes the colour of the Blinkt accordingly:
+The `blinkt-rain.py` script works similar to the UV Index one, but shows the probability of rain in 1 hour and changes the colour of the Blinkt accordingly:
 - Green = very low chance of rain
 - Yellow = low chance of rain
 - Orange = moderate chance or rain
