@@ -21,8 +21,12 @@ Install the libraries for your HAT or pHAT:
 - [Blinkt!](https://github.com/pimoroni/blinkt)
 - [PaPiRusZero](https://github.com/PiSupply/PaPiRus)
 
-Install the required forecastio library, which is a Dark Sky API wrapper:
-`sudo pip install python-forecastio`
+Install the Dark Sky Python API wrapper:
+```bash
+git clone https://github.com/raspberrycoulis/dark-sky-python.git
+cd dark-sky-python
+sudo python setup.py install
+```
 
 Find your latitude and longitude [here](https://www.latlong.net/).
 

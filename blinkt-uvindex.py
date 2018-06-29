@@ -26,7 +26,7 @@ blinkt.set_clear_on_exit(True)
 try:
     import darksky
 except ImportError:
-    exit("This script requires the Dak Sky Python API Wrapper\nInstall with: git clone https://github.com/raspberrycoulis/dark-sky-python.git\nThen run sudo python setup.py install in the directory")
+    exit("This script requires the Dark Sky Python API Wrapper\nInstall with: git clone https://github.com/raspberrycoulis/dark-sky-python.git\nThen run sudo python setup.py install in the directory")
 
 def uvIndex():
     forecast = darksky.Forecast(api_key, latitude, longitude, units=units)
