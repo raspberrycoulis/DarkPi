@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sys
+import os
 from papirus import Papirus, PapirusText, PapirusTextPos
 from time import sleep
 
@@ -13,19 +13,20 @@ config.read('config/config.ini')
 api_key = config.get('darksky', 'key')
 latitude = config.get('darksky', 'latitude')
 longitude = config.get('darksky', 'longitude')
+units = config.get('darksky', 'units')
 
 # For PaPiRus
 screen = Papirus()
 text = PapirusText()
 
 try:
-    import forecastio
+    import darksky
 except ImportError:
-    exit("This script requires the forecastio module\nInstall with: sudo pip install forecastio")
+    exit("This script requires the forecastio module\nInstall with: git clone https://github.com/raspberrycoulis/dark-sky-python.git\nThen run sudo python setup.py install in the directory")
 
 def display():
-    forecast = forecastio.load_forecast(api_key,latitude,longitude)
-    current = forecast.currently()
+    forecast = darksky.Forecast(api_key, latitude, longitude, units=units)
+    current = forecast.currently
     temp = current.temperature
     temp = str(temp)
     humidity = current.humidity*100
@@ -48,4 +49,4 @@ except (KeyboardInterrupt, SystemExit):
     text.write("Exiting...\nGoodbye!")
     sleep(2)
     screen.clear()
-    sys.exit()
+    os._exit(1)
