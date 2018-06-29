@@ -10,7 +10,6 @@
 # script by pressing the joystick button too!                #
 # Created by Wesley Archer (@raspberrycoulis)                #
 
-import darksky
 from dot3k import joystick as nav
 from dot3k import lcd
 from dot3k import backlight as backlight
@@ -30,7 +29,7 @@ units = config.get('darksky', 'units')
 try:
     import darksky
 except ImportError:
-    exit("This script requires the forecastio module\nInstall with: git clone https://github.com/raspberrycoulis/dark-sky-python.git\nThen run sudo python setup.py install in the directory")
+    exit("This script requires the Dak Sky Python API Wrapper\nInstall with: git clone https://github.com/raspberrycoulis/dark-sky-python.git\nThen run sudo python setup.py install in the directory")
 
 def rainWarning():
     forecast = darksky.Forecast(api_key, latitude, longitude, units=units)

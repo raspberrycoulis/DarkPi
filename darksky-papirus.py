@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# This script will get the current weather forecast from     #
+# Dark Sky and display a variety of stats on PiSupply's      #
+# PaPiRus, including temperature, humidity, and the chance   #
+# of rain.                                                   #
+# Created by Wesley Archer (@raspberrycoulis)                #
+
 import os
 from papirus import Papirus, PapirusText, PapirusTextPos
 from time import sleep
@@ -22,7 +28,7 @@ text = PapirusText()
 try:
     import darksky
 except ImportError:
-    exit("This script requires the forecastio module\nInstall with: git clone https://github.com/raspberrycoulis/dark-sky-python.git\nThen run sudo python setup.py install in the directory")
+    exit("This script requires the Dak Sky Python API Wrapper\nInstall with: git clone https://github.com/raspberrycoulis/dark-sky-python.git\nThen run sudo python setup.py install in the directory")
 
 def display():
     forecast = darksky.Forecast(api_key, latitude, longitude, units=units)

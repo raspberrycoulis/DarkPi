@@ -1,9 +1,13 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
+
+# This script will get the current weather forecast from     #
+# Dark Sky and display the chance of rain in the next hour   #
+# on Pimoroni’s Blinkt! by changing the colour accordingly.  #
+# If it's blue, it's raining!                                #
+# Created by Wesley Archer (@raspberrycoulis)                #
 
 import blinkt
 from time import sleep
-import sys
 import os
 from ConfigParser import ConfigParser
 
@@ -13,6 +17,7 @@ config.read('config/config.ini')
 api_key = config.get('darksky', 'key')
 latitude = config.get('darksky', 'latitude')
 longitude = config.get('darksky', 'longitude')
+units = config.get('darksky', 'units')
 
 # Blinkt stuff
 blinkt.set_brightness(0.1)
@@ -21,11 +26,11 @@ blinkt.set_clear_on_exit(True)
 try:
     import darksky
 except ImportError:
-    exit("This script requires the forecastio module\nInstall with: git clone https://github.com/raspberrycoulis/dark-sky-python.git\nThen run sudo python setup.py install in the directory")
+    exit("This script requires the Dak Sky Python API Wrapper\nInstall with: git clone https://github.com/raspberrycoulis/dark-sky-python.git\nThen run sudo python setup.py install in the directory")
 
 def rain():
-    f = darksky.Forecast(api_key, latitude, longitude)
-    hourly = f.hourly
+    forecast = darksky.Forecast(api_key, latitude, longitude, units=units)
+    hourly = forecast.hourly
     rain = hourly[1].precipProbability*100
     try:
         if rain <=19:
@@ -58,4 +63,4 @@ try:
 except (KeyboardInterrupt, SystemExit):
     print("\nExiting...\nGoodbye!")
     sleep(2)
-    sys.exit()
+    os._exit(1)

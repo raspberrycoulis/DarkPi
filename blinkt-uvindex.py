@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 
-# This script will get the current UV index from Dark Sky    #
-# then shows the results visually on the Blinkt by changing  #
-# the LED colours accordingly.                               #
+# This script will get the current weather forecast from     #
+# Dark Sky and display the current UV Index on Pimoroni’s    #
+# Blinkt! by changing the colour accordingly.                #
+# Ranges from green, yellow, orange, red and violet.         #
 # Created by Wesley Archer (@raspberrycoulis)                #
 
 import blinkt
 from time import sleep
-import sys
 import os
 from ConfigParser import ConfigParser
 
@@ -17,19 +17,20 @@ config.read('config/config.ini')
 api_key = config.get('darksky', 'key')
 latitude = config.get('darksky', 'latitude')
 longitude = config.get('darksky', 'longitude')
+units = config.get('darksky', 'units')
 
 # Blinkt stuff
 blinkt.set_brightness(0.1)
 blinkt.set_clear_on_exit(True)
 
 try:
-    import forecastio
+    import darksky
 except ImportError:
-    exit("This script requires the forecastio module\nInstall with: sudo pip install forecastio")
+    exit("This script requires the Dak Sky Python API Wrapper\nInstall with: git clone https://github.com/raspberrycoulis/dark-sky-python.git\nThen run sudo python setup.py install in the directory")
 
 def uvIndex():
-    forecast = forecastio.load_forecast(api_key,latitude,longitude)
-    current = forecast.currently()
+    forecast = darksky.Forecast(api_key, latitude, longitude, units=units)
+    current = forecast.currently
     uvIndex = current.uvIndex
     try:
         if uvIndex <=2.9:
@@ -62,4 +63,4 @@ try:
 except (KeyboardInterrupt, SystemExit):
     print("\nExiting...\nGoodbye!")
     sleep(2)
-    sys.exit()
+    os._exit(1)
