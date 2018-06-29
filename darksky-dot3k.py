@@ -25,17 +25,16 @@ config.read('config/config.ini')
 api_key = config.get('darksky', 'key')
 latitude = config.get('darksky', 'latitude')
 longitude = config.get('darksky', 'longitude')
+units = config.get('darksky', 'units')
 
-# Import forecastio and warn if not installed
 try:
-    import forecastio
+    import darksky
 except ImportError:
-    exit("This script requires the forecastio module\nInstall with: sudo pip install forecastio")
-    
-# Function to warn of rain in 1 hour. Uses alternative Dark Sky API wrapper.
+    exit("This script requires the forecastio module\nInstall with: git clone https://github.com/raspberrycoulis/dark-sky-python.git\nThen run sudo python setup.py install in the directory")
+
 def rainWarning():
-    f = darksky.Forecast(api_key, latitude, longitude)
-    hourly = f.hourly
+    forecast = darksky.Forecast(api_key, latitude, longitude, units=units)
+    hourly = forecast.hourly
     rain = hourly[1].precipProbability*100
     if rain ==0:
         backlight.set_graph(0)
@@ -60,19 +59,16 @@ def rainWarning():
     else:
         backlight.set_graph(1.0)
 
-# Function to display the information accordingly.
 def display():
-    forecast = forecastio.load_forecast(api_key,latitude,longitude) # forecastio - will remove
-    f = darksky.Forecast(api_key, latitude, longitude) # Need to switch to this permanently
-    current = forecast.currently() # forecastio
-    temp = current.temperature # forecastio
+    forecast = darksky.Forecast(api_key, latitude, longitude, units=units)
+    current = forecast.currently
+    temp = current.temperature
     temp = str(temp)
-    humidity = current.humidity*100 # forecastio
+    humidity = current.humidity*100
     humidity = str(humidity)
-    hourly = f.hourly # Dark Sky Python API wrapper
-    rain = hourly[1].precipProbability*100 # Dark Sky Python API wrapper
+    rain = current.precipProbability*100
     rain = str(rain)
-    uvIndex = current.uvIndex # forecastio
+    uvIndex = current.uvIndex
     uv = str(uvIndex)
     if uvIndex <=2.9:
         backlight.rgb(90, 148, 35)  # Green (low)
@@ -98,7 +94,7 @@ def display():
         print("UV Index: "+uv+"")
     except:
         lcd.write("Connection Error")
-    
+
     # Press the button on the joystick to exit
     @nav.on(nav.BUTTON)
     def handle_button(pin):
@@ -107,7 +103,6 @@ def display():
         backlight.set_graph(0)
         os._exit(1)
 
-# Run in a loop unless CTRL+C or joystick is pressed
 try:
     while True:
         rainWarning()
