@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # This script will get the current weather forecast from     #
-# Dark Sky and display the current UV Index on Pimoroni’s    #
+# Dark Sky and display the current UV Index on Pimoroni's    #
 # Blinkt! by changing the colour accordingly.                #
 # Ranges from green, yellow, orange, red and violet.         #
 # Created by Wesley Archer (@raspberrycoulis)                #
