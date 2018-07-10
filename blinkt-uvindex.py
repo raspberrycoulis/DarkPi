@@ -63,4 +63,6 @@ try:
 except (KeyboardInterrupt, SystemExit):
     print("\nExiting...\nGoodbye!")
     sleep(2)
+    blinkt.set_all(0, 0, 0)
+    blinkt.show()
     os._exit(1)
