@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # This script will get the current weather forecast from     #
-# Dark Sky and display a variety of stats on Pimoroni’s      #
+# Dark Sky and display a variety of stats on Pimoroni's      #
 # Display-o-Tron 3000, including temperature, humidity,      #
 # chance of rain and the UV index. The backlight colour will #
 # change depending on the UV index and the bar graph will    #

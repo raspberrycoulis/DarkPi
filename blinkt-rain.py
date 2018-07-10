@@ -2,7 +2,7 @@
 
 # This script will get the current weather forecast from     #
 # Dark Sky and display the chance of rain in the next hour   #
-# on Pimoroni’s Blinkt! by changing the colour accordingly.  #
+# on Pimoroni's Blinkt! by changing the colour accordingly.  #
 # If it's blue, it's raining!                                #
 # Created by Wesley Archer (@raspberrycoulis)                #
 
